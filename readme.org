@@ -1,25 +1,19 @@
-* Keithley2400
-A minimal python module to communicate with a Keithley 2400 Source Meter over Serial Interface.
+* Mercury ITC Temperature Controller
+A small python module to communicate with an Oxford Instruments Mercury ITC Temperature Controller over USB or Ethernet.
+
+The device must be in Remote Control Mode, and, if using Ethernet, the IP address must be configured on the device and in the init routine.
+
+The temperatureController class contains all the routines for communicating with the devices, including one for calibrating further temperature sensors.
+
+The temperatureControllerEthernet inherits from the former and uses the Ethernet protocol for communication.
+
+Make sure to update the devices configuration to match the setup of your controller. You can get the device specifiers using the getDevices() method.
 
 ** Setup Requirements
 Requires: 
 - Python Installation
 - python serial module
 
-** Initialization
-To use the source meter initialize a Keithley2400 object specifying the port. On Windows use port = 0 for COM1, etc. On a Mac use "/dev/..."
+** Further Information
+The repository also includes an ipython notebook that was used to analyze data and produce a calibration file for a new sensor.  
 
-
-** Voltage Measurement
-To measure a voltage first call setupVoltageMeasurement().
-To get a voltage reading call read().
-
-
-** Voltage Source
-To use the source meter as a voltage source, go through the following process:
-- Initialize the interface
-- Reset the device
-- Set the source functionality to voltage
-- Set the voltage.
-
-This process is performed if the module is run on the command line. 
