@@ -51,6 +51,10 @@ class Keithley2400(object):
         """set the voltage. voltage is a numerical value"""
         self.sendValue(":SOUR:VOLT " + str(voltage))
 
+    def beeperOff(self):
+        self.sendValue(":SYST:BEEP:STAT OFF")
+        
+        
     def outputOn(self):
         self.sendValue(":OUTPUT ON")
 
@@ -75,6 +79,7 @@ class Keithley2400(object):
         Use this to set Keithley up, followed by calls to read to get the values."""
         #
         self.reset()
+        self.beeperOff()
         self.setSourceFunc(func="CURR")
         self.sendValue(":SOUR:CURR:MODE FIXED")
         self.sendValue(":SENS:FUNC \"VOLT\"")
